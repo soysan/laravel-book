@@ -28,11 +28,12 @@ services:
     ports:
       - 33060:3306
 
-  node:
-    image: node:12.8-alpine
+  npm:
+    image: node:12.18.4-buster
     volumes:
       - ./backend:/work
     working_dir: /work
+    entrypoint: ['npm']
 
 volumes:
   db-store:
