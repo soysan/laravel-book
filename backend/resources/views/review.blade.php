@@ -5,7 +5,7 @@
 <h1 class="pagetitle">レビュー投稿ページ</h1>
 <div class="row justify-content-center container">
     <div class="col-md-10">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card">
                 <div class="card-body">
