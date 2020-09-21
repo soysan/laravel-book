@@ -22,6 +22,12 @@ class ReviewController extends Controller
     {
         $post = $request->all();
 
+        $validateData = $request->validate([
+            'title' => 'required | max: 255',
+            'body' => 'required',
+            'image' => 'mimes: jpeg, png, jpg, gif, svg | max: 2048',
+        ]);
+
         if ($request->hasFile('image')) {
 
             $request->file('image')->store('/public/images');
