@@ -25,7 +25,15 @@ services:
       - MYSQL_PASSWORD=secret
       - MYSQL_ROOT_PASSWORD=secret
       - TZ=Asia/Tokyo
+    ports:
+      - 33060:3306
 
-# 追記
+  npm:
+    image: node:12.18.4-buster
+    volumes:
+      - ./backend:/work
+    working_dir: /work
+    entrypoint: ['npm']
+
 volumes:
   db-store:
