@@ -13,6 +13,11 @@
     <div class="col-md-4">
         <div class="card mb50">
             <div class="card-body">
+
+                @if (!empty($review->image))
+                    <div class="image-wrapper"><img class="book-image" src="{{ asset('storage/images'.$review->image) }}" alt=""></div>
+                @endif
+
                 <div class="image-wrapper">
                     <img class="book-image" src="{{ asset('images/book.png') }}" alt="">
                 </div>
