@@ -15,12 +15,15 @@
             <div class="card-body">
 
                 @if (!empty($review->image))
-                    <div class="image-wrapper"><img class="book-image" src="{{ asset('storage/images'.$review->image) }}" alt=""></div>
+                    <div class="image-wrapper">
+                        <img class="book-image" src="{{ asset('storage/images/'. $review->image) }}" alt="">
+                    </div>
+                @else
+                    <div class="image-wrapper">
+                        <img class="book-image" src="{{ asset('images/book.png') }}" alt="">
+                    </div>
                 @endif
 
-                <div class="image-wrapper">
-                    <img class="book-image" src="{{ asset('images/book.png') }}" alt="">
-                </div>
             <h3 class="h3 book-title">{{ $review->title }}</h3>
                 <p class="description">
                     {{ $review->body }}

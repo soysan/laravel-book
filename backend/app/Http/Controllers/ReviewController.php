@@ -27,7 +27,7 @@ class ReviewController extends Controller
         $validateData = $request->validate([
             'title' => 'required | max: 255',
             'body' => 'required',
-            'image' => 'mimes: jpeg, png, jpg, gif, svg | max: 2048',
+            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
