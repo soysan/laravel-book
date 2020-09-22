@@ -48,6 +48,6 @@ class ReviewController extends Controller
 
         Review::insert($data);
 
-        return redirect('/');
+        return redirect('/')->with('flash_message', '投稿が完了しました');
     }
 }
