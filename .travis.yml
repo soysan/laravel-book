@@ -7,7 +7,8 @@ services:
 
 before_install:
     - docker-compose up -d --build
-    - cp /backend/.env.example /backend/.env
+    - ls
+    - cp .env.example .env
     - docker-compose exec app php artisan key:generate
 
 script:
