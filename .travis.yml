@@ -7,9 +7,9 @@ services:
 
 before_install:
     - docker-compose up -d --build
-    - docker-compose exec app cd backend
-    - docker-compose exec app cp .env.example .env
-    - docker-compose exec app php artisan key:generate
+    - docker-compose exec app bash
+    - cp .env.example .env
+    - php artisan key:generate
 
 script:
     - docker-compose exec app ./vender/bin/phpunit
