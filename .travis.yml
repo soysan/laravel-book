@@ -18,6 +18,7 @@ before_install:
 
 script:
   - docker-compose exec app ./vender/bin/phpunit
+  - docker-compose exec app php artisan migrate
 
 after_success:
   - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
