@@ -9,7 +9,7 @@ before_install:
   - docker-compose up -d --build
   - ls -a backend
   - cp backend/.env.example backend/.env
-  - docker-compose exec app ls work/
+  - docker-compose exec app ls work
   - curl -sS https://getcomposer.org/installer | php
   - mv composer.phar /usr/local/bin/composer
   - docker-compose exec app | curl
