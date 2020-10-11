@@ -7,18 +7,13 @@ services:
 
 before_install:
   - docker-compose up -d --build
-  - ls -a backend
   - cp backend/.env.example backend/.env
-  - docker-compose exec app ls
-# //   - curl -sS https://getcomposer.org/installer | php
-# //   - sudo mv composer.phar /usr/local/bin/composer
   - docker-compose exec app composer install
-  - docker-compose exec app ls
   - docker-compose exec app php artisan key:generate
 
 script:
-  - docker-compose exec app ./vender/bin/phpunit
   - docker-compose exec app php artisan migrate
+  - docker-compose exec app ./vendor/bin/phpunit
 
 after_success:
   - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
