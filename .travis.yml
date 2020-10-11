@@ -10,8 +10,9 @@ before_install:
   - ls -a backend
   - cp backend/.env.example backend/.env
   - docker-compose exec app ls
-  - curl -sS https://getcomposer.org/installer | php
-  - sudo mv composer.phar /usr/local/bin/composer
+//   - curl -sS https://getcomposer.org/installer | php
+//   - sudo mv composer.phar /usr/local/bin/composer
+  - docker-compsoe exec app composer update
   - docker-compose exec app ls
   - docker-compose exec app php artisan key:generate
 
