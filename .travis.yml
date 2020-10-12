@@ -13,7 +13,7 @@ before_install:
 
   # - docker-compose exec db chown -R mysql:mysql /var/run/mysqld/mysqld.sock
   # - docker-compose exec db chmod -R 644 /var/run/mysqld/mysqld.sock
-  - docker-compose exec db rm /var/lib/mysqld/mysqld.sock
+  - docker-compose exec db mysql services mysql start
   - docker-compose exec db create database test_books | mysql -uroot -psecret
   - docker-compose exec app php artisan migrate:fresh --database=mysql_testing
 
