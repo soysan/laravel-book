@@ -1,6 +1,6 @@
 FROM php:7.4-fpm-buster
 
-SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
+# SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
     COMPOSER_HOME=/composer
@@ -13,7 +13,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     docker-php-ext-install intl pdo_mysql zip bcmath
 
-RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg  && \
     docker-php-ext-install -j$(nproc) gd
 
 
