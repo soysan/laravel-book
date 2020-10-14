@@ -4,7 +4,7 @@ services:
     build: ./infra/php
     volumes:
       - ./backend:/work
-
+      
   web:
     image: nginx:1.18-alpine
     ports:
