@@ -10,7 +10,7 @@ before_install:
   - cp backend/.env.example backend/.env
   - docker-compose exec app composer install
   - docker-compose exec app php artisan key:generate --env=testing
-  - docker-compose exec db mysql -u root -psecret | CREATE database test_books | GRANT ALL ON `testing_db`.* TO 'forge'@'%'
+  - docker-compose exec db mysql -u root -psecret | 'CREATE database test_books;' | "GRANT ALL ON `testing_db`.* TO 'forge'@'%'; "
   - exit
   - docker-compose exec app php artisan migrate --env=testing
 
