@@ -11,17 +11,14 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d --build
-  # - cp backend/.env.example backend/.env
   - docker-compose exec app composer install
   - docker-compose exec app php artisan key:generate --env=testing
-  # - docker-compose exec db_testing mysql -u root -psecret | 'CREATE database test_books;' | "GRANT ALL ON `test_books`.* TO 'forge'@'%'; "
-  # - exit
   - docker-compose exec app php artisan migrate --env=testing
 
 script:
   - docker-compose exec app ./test.sh
 
 after_success:
-  - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push soysan/laravel-book
+  - docker push "$DOCKER_ID"/laravel-book
