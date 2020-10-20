@@ -34,5 +34,23 @@ services:
     tty: true
     stdin_open: true
 
+  db_testing:
+    image: mysql:8.0
+    volumes:
+      - ./infra/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    tmpfs:
+      - /var/lib/mysql
+      - /var/log/mysql
+    environment:
+      - MYSQL_DATABASE=books
+      - MYSQL_USER=phper
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+      - TZ=Asia/Tokyo
+    ports:
+      - 33061:3306
+    tty: true
+    stdin_open: true
+
 volumes:
   db-store:
