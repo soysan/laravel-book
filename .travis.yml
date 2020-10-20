@@ -6,8 +6,12 @@ services:
   - docker
 
 before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/1.18.0-rc2/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
   - docker-compose up -d --build
-  - cp backend/.env.example backend/.env
+  # - cp backend/.env.example backend/.env
   - docker-compose exec app composer install
   - docker-compose exec app php artisan key:generate --env=testing
   - docker-compose exec db mysql -u root -psecret | 'CREATE database test_books;' | "GRANT ALL ON `testing_db`.* TO 'forge'@'%'; "
