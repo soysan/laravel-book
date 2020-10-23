@@ -22,3 +22,15 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker push "$DOCKER_ID"/laravel-book
+
+deploy:
+    provider: elasticbeanstalk
+    region: "ap-northeast-1"
+    app: "Laravel-book"
+    env: "LaravelBook-env"
+    bucket_name: elasticbeanstalk-ap-northeast-1-584365936148
+    bucket_path: "Laravel-book"
+    access_key_id: "$AWS_ACCESS_KEY"
+    secret_access_key: "$AWS_SECRET_KEY"
+    on:
+        branch: main
